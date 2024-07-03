@@ -20,9 +20,9 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
-import { api, setupInterceptors } from "../../api.js";
-import { useRouter } from 'vue-router';
+import {ref, onMounted} from 'vue';
+import {api, setupInterceptors} from "../../api.js";
+import {useRouter} from 'vue-router';
 
 export default {
     name: "Index",

@@ -1,7 +1,7 @@
 <template>
-<div>
-    Personal
-</div>
+    <div>
+        Personal
+    </div>
 </template>
 
 <script setup>

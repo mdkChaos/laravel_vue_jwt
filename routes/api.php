@@ -20,7 +20,7 @@ Route::middleware('api')->prefix('auth')->controller(AuthController::class)->gro
     Route::post('/refresh', 'refresh');
     Route::post('/me', 'me');
 
-    Route::middleware('auth:api')->prefix('fruits')->controller(FruitController::class)->group(function () {
+    Route::middleware('jwt.auth')->prefix('fruits')->controller(FruitController::class)->group(function () {
         Route::get('/', 'index');
     });
 });

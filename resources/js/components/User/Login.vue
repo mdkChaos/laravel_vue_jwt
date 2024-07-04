@@ -44,7 +44,6 @@ export default {
                 }, 1000);
             } catch (err) {
                 error.value = 'Login failed. Please check your credentials and try again.';
-                console.error('Login error:', err);
             }
         }
 

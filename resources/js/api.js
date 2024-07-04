@@ -9,14 +9,11 @@ api.interceptors.request.use(config => {
     }
     return config;
 }, error => {
-    console.error('Error in request:', error);
     return Promise.reject(error);
 });
 
 const setupInterceptors = (router) => {
-    api.interceptors.response.use(response => {
-        return response;
-    }, async error => {
+    api.interceptors.response.use({}, async error => {
         const originalRequest = error.config;
         if (error.response.data.message === 'Token has expired' && !originalRequest._retry) {
             originalRequest._retry = true;
@@ -33,12 +30,12 @@ const setupInterceptors = (router) => {
             } catch (refreshError) {
                 console.error('Token refresh failed:', refreshError);
                 localStorage.removeItem('access_token');
-                router.push({ name: 'user.login' });
+                router.push({name: 'user.login'});
             }
         }
         if (error.response.status === 401) {
             localStorage.removeItem('access_token');
-            router.push({ name: 'user.login' });
+            router.push({name: 'user.login'});
         }
         return Promise.reject(error);
     });
